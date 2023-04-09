@@ -6,9 +6,7 @@ class User
 {
     public function getNameAndLastName(): array
     {
-        /** @var \CUser $USER */
-        global $USER;
-        $result = $USER::GetList();
+        $result = \CUser::GetList();
 
         while ($row = $result->Fetch()) {
             $data[$row['ID']] = $row['NAME'] . ' ' . $row['LAST_NAME'];
