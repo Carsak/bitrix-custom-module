@@ -11,11 +11,13 @@ class User extends Controller
 
     public function getDefaultPreFilters(): array
     {
+        // Закомментируйте ActionFilter\Csrf() для отключение проверки csrf
         return [
             new ActionFilter\Authentication(),
             new ActionFilter\HttpMethod(
                 [ActionFilter\HttpMethod::METHOD_GET, ActionFilter\HttpMethod::METHOD_POST]
             ),
+            new ActionFilter\Csrf(),
         ];
     }
 
