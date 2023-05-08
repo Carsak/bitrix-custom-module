@@ -2,6 +2,7 @@
 namespace Almat\Su\Controller;
 
 
+use Almat\Su\Controller\ActionFilter as MyActionFilter;
 use Bitrix\Main\Engine\Controller;
 use Bitrix\Main\Engine\ActionFilter;
 
@@ -11,13 +12,11 @@ class User extends Controller
 
     public function getDefaultPreFilters(): array
     {
-        // Закомментируйте ActionFilter\Csrf() для отключение проверки csrf
         return [
-            new ActionFilter\Authentication(),
+            new MyActionFilter\SimpleToken(),
             new ActionFilter\HttpMethod(
                 [ActionFilter\HttpMethod::METHOD_GET, ActionFilter\HttpMethod::METHOD_POST]
             ),
-            new ActionFilter\Csrf(),
         ];
     }
 
